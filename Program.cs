@@ -21,7 +21,7 @@
                     for (int y = 0; y < n; y++)  //перебор по y
                     {
                         array1[x, y] = rnd.Next(1, 21);
-                        Console.Write(array1[x, y] + " ");
+                        Console.Write(array1[x, y] + "\t");
                     }
                     Console.WriteLine();
                 }
@@ -35,21 +35,29 @@
                             max = array1[i, j];
                         }
                     }
-                    Console.WriteLine("max значение в строке " + (i + 1)  + " : {0}", max);
+                    Console.WriteLine("max значение в строке " + (i + 1) + " : {0}", max);
                 }
-                for (int j = 0; j < n; j++)  // нахождение минимального значения в столбце
-                {
-                    int min = array1[0, j];
-                    for (int i = 0; i < n; i++)
-                    {
-                        if (array1[i, j] < min)
-                        {
-                            min = array1[i, j];
-                        }
-                    }
-                    Console.WriteLine("min значение в столбце " + (j + 1) + " : {0}", min);
-                }
+                GetMinValueColumns(array1);
                 Console.WriteLine();
+            }
+        }
+
+        private static void GetMinValueColumns(int[,] array1)
+        {
+            int min = 0;
+            int m = array1.GetLength(0);
+            int n = array1.GetLength(1);
+            for (int j = 0; j < n; j++)  // нахождение минимального значения в столбце
+            {
+                min = array1[0, j];
+                for (int i = 0; i < m; i++)
+                {
+                    if (array1[i, j] < min)
+                    {
+                        min = array1[i, j];
+                    }
+                }
+                Console.WriteLine("min значение в столбце " + (j + 1) + " : {0}", min);
             }
         }
     }
